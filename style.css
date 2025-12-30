@@ -285,23 +285,6 @@ h1 span:nth-child(7) { animation-delay: 2.8s; }
     }
 }
 
-.btn-start {
-    background: white;
-    color: black;
-    border: none;
-    padding: 16px 70px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    opacity: 0;
-    transform: translateY(15px) scale(0.9);
-    animation: buttonEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 2.4s forwards;
-    position: relative;
-    overflow: hidden;
-}
-
 @keyframes buttonEntrance {
     to {
         opacity: 1;
@@ -309,37 +292,57 @@ h1 span:nth-child(7) { animation-delay: 2.8s; }
     }
 }
 
-.btn-start::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.1);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
+.btn-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 12px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    transform: translateY(15px) scale(0.9);
+    animation: buttonEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 2.6s forwards;
 }
 
-.btn-start:hover::before {
-    width: 300px;
-    height: 300px;
+.btn-link:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
 }
 
-.btn-start:hover {
-    transform: scale(1.1) translateY(-2px);
-    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3), 0 5px 15px rgba(0,0,0,0.3);
-}
-
-.btn-start:active {
-    transform: scale(1.05) translateY(0);
+.btn-link:active {
+    transform: scale(0.95);
     transition: transform 0.1s;
 }
 
-.btn-start span {
-    position: relative;
-    z-index: 1;
+/* Zoom in effect for link */
+body.zoom-in {
+    animation: zoomIn 0.8s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+    overflow: hidden;
+}
+
+body.zoom-in .scatter-container,
+body.zoom-in .glass-modal,
+body.zoom-in .vignette {
+    animation: zoomIn 0.8s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(0.3);
+        opacity: 0;
+    }
 }
 
 /* Overlay to darken edges */
@@ -390,29 +393,6 @@ h1 span:nth-child(7) { animation-delay: 2.8s; }
 @keyframes ripple {
     to {
         transform: scale(4);
-        opacity: 0;
-    }
-}
-
-/* Zoom out transition for page exit */
-body.zoom-out {
-    animation: zoomOut 0.8s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
-    overflow: hidden;
-}
-
-body.zoom-out .scatter-container,
-body.zoom-out .glass-modal,
-body.zoom-out .vignette {
-    animation: zoomOut 0.8s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
-}
-
-@keyframes zoomOut {
-    from {
-        transform: scale(1);
-        opacity: 1;
-    }
-    to {
-        transform: scale(2);
         opacity: 0;
     }
 }

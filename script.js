@@ -52,12 +52,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }, i * 200);
     }
 
-    // Button click animation
-    const btnStart = document.querySelector('.btn-start');
+    // Zoom in effect for link
+    const btnLink = document.querySelector('.btn-link');
     const floatingImages = document.querySelectorAll('.floating-img');
-
-    if (btnStart) {
-        btnStart.addEventListener('click', function(e) {
+    if (btnLink) {
+        btnLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create ripple effect
             const ripple = document.createElement('span');
             const rect = this.getBoundingClientRect();
             const size = Math.max(rect.width, rect.height);
@@ -69,31 +71,25 @@ document.addEventListener('DOMContentLoaded', function() {
             ripple.style.top = y + 'px';
             ripple.style.position = 'absolute';
             ripple.style.borderRadius = '50%';
-            ripple.style.background = 'rgba(0, 0, 0, 0.2)';
+            ripple.style.background = 'rgba(255, 255, 255, 0.3)';
             ripple.style.transform = 'scale(0)';
             ripple.style.animation = 'ripple 0.6s ease-out';
             ripple.style.pointerEvents = 'none';
+            ripple.style.zIndex = '1000';
             
+            this.style.position = 'relative';
+            this.style.overflow = 'hidden';
             this.appendChild(ripple);
             
             setTimeout(() => ripple.remove(), 600);
-        });
-
-        // Smooth scroll on button click (if needed for navigation)
-        btnStart.addEventListener('click', function(e) {
-            e.preventDefault();
-            this.style.transform = 'scale(0.95)';
             
-            // Mark that we're coming from new.html
-            sessionStorage.setItem('fromNewPage', 'true');
+            // Add zoom-in effect to body
+            document.body.classList.add('zoom-in');
             
-            // Add zoom-out effect to body
-            document.body.classList.add('zoom-out');
-            
-            // Navigate to create.html after zoom animation
+            // Navigate after zoom animation
             setTimeout(() => {
-                window.location.href = '../onkar/create.html';
-            }, 600);
+                window.location.href = this.getAttribute('href');
+            }, 800);
         });
     }
 
