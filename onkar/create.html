@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onkar Sonne - Engineeer</title>
+    
+    <!-- Preconnect to external domains for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    
+    <!-- Load CSS first -->
+    <link rel="stylesheet" href="create.css">
+    
+    <!-- Load fonts asynchronously with font-display swap -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    
+    <!-- Load Font Awesome asynchronously -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    
+    <!-- Load AOS CSS asynchronously -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"></noscript>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="image/Onkar resume.pdf" class="logo">
+                <img src="image/user.png" alt="Logo" class="logo-img" loading="eager">
+                <span>OS</span>
+            </a>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <button class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <button class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" data-aos="fade-right">
+                    <h1>Hi, I'm <span class="highlight">Onkar Sonne</span></h1>
+                    <div class="typing-container">
+                        <p class="subtitle">I'm a <span class="typing-text"></span></p>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://github.com/Onkar325" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/onkar-sonne-474538281/" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="hero-image" data-aos="fade-left">
+                    <img src="image/logo1.png" alt="Profile" class="profile-img" loading="eager">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                    <div class="shape shape-4"></div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrow">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">About Me</h2>
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <p>I'm a passionate developer with expertise in building modern web applications.
+                       With a strong foundation in both front-end and back-end development,
+                       I create seamless, user-friendly experiences that solve real-world problems.</p>
+                    <p>My journey in tech started with a passion for creating things that make a difference. 
+                       I'm constantly learning and exploring new technologies to stay at the forefront of web development.</p>
+                    <div class="about-stats">
+                        <!-- <div class="stat-item">
+                            <span class="stat-number">3+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div> -->
+                        <div class="stat-item">
+                            <span class="stat-number">3+</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div> 
+                        <!-- <div class="stat-item">
+                            <span class="stat-number">30+</span>
+                            <span class="stat-label">Happy Clients</span>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="about-image" data-aos="fade-left">
+                    <img src="image/onkarpng.jpg" alt="About Me" class="about-img" loading="lazy">
+                    <div class="experience-badge">
+                        <span>4th</span>
+                        <p>Year student</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fab fa-html5"></i>
+                    <h3>Html</h3>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fab fa-css3-alt"></i>
+                    <h3>Css</h3>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fab fa-python"></i>
+                    <h3>Python</h3>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fas fa-database"></i>
+                    <h3>SQL</h3>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="500">
+                    <i class="fab fa-aws"></i>
+                    <h3>AWS</h3>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 50%"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="600">
+                    <i class="fas fa-file-excel"></i>
+                    <h3>Excel Office</h3>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="600">
+                    <i class="fas fa-file-word"></i>
+                    <h3>Word office</h3>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 95%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-image">
+                        <img src="image/watchwave.png" alt="Project 1" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="http://127.0.0.1:5502/main_3.html" class="project-link"><i class="fas fa-link"></i></a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>WATCHWAVE.FUN</h3>
+                        <p>OTT-Platform to watch movies and TV shows and more.</p>
+                        <div class="project-tags">
+                            <span class="tag">html</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">PHP</span>
+                            <span class="tag">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-image">
+                        <img src="image/useractiviy.png" alt="Project 2" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                                <a href="https://github.com/Onkar325/Trackzen.git" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>USER ACTIVITY TRACKER</h3>
+                        <p>A user activity tracker to track YOUR activity and more.</p>
+                        <div class="project-tags">
+                            <span class="tag">Html</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">PHP</span>
+                            <span class="tag">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Certifications</h2>
+            <div class="certs-grid">
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="cert-header">
+                        <div class="cert-badge">Internship</div>
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="cert-title">ADIRTH AWS Fundamentals</h3>
+                    <div class="cert-meta">
+                        <span class="issuer"><i class="fab fa-aws"></i> Amazon Web Services</span>
+                        <span class="date"><i class="far fa-calendar"></i> 2023</span>
+                    </div>
+                    <div class="cert-actions">
+                        <a href="certificate/Onkar_i.png" class="btn btn-secondary cert-verify">Verify</a>
+                    </div>
+                </div>
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="cert-header">
+                        <div class="cert-badge">Job Simulation</div>
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="cert-title">Deloitte Data Analytics</h3>
+                    <div class="cert-meta">
+                        <span class="issuer"><i class="fas fa-graduation-cap"></i> Coursera</span>
+                        <span class="date"><i class="far fa-calendar"></i> 2025</span>
+                    </div>
+                    <div class="cert-actions">
+                        <a href="certificate/DA BY DELOITE.pdf" class="btn btn-secondary cert-verify">Verify</a>
+                    </div>
+                </div>
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="cert-header">
+                        <div class="cert-badge">Job Simulation</div>
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="cert-title">Walmart software engineering program</h3>
+                    <div class="cert-meta">
+                        <span class="issuer"><i class="fas fa-laptop-code"></i> Coursera</span>
+                        <span class="date"><i class="far fa-calendar"></i> 2023</span>
+                    </div>
+                    <div class="cert-actions">
+                        <a href="certificate/walmart certificate.pdf" class="btn btn-secondary cert-verify">Verify</a>
+                    </div>
+                </div>
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="cert-header">
+                        <div class="cert-badge">Job Simulation</div>
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="cert-title">Walmart software engineering program</h3>
+                    <div class="cert-meta">
+                        <span class="issuer"><i class="fas fa-laptop-code"></i> Coursera</span>
+                        <span class="date"><i class="far fa-calendar"></i> 2023</span>
+                    </div>
+                    <div class="cert-actions">
+                        <a href="certificate/walmart certificate.pdf" class="btn btn-secondary cert-verify">Verify</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>sonneonkar@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+8 381 057 023</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Pune, India</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form" data-aos="fade-left">
+                    <form id="contactForm" action="https://api.web3forms.com/submit"method="POST">
+
+                        <!-- Web3Forms Access Key (REQUIRED) -->
+                        <input type="hidden" name="access_key" value="27646b57-3918-4d09-9382-5c2e60f4e5be">
+
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                        </div>
+
+                        <!-- Optional but useful
+                        <input type="hidden" name="subject" value="New Contact Form Message">
+                        <input type="hidden" name="from_name" value="Website Contact Form"> -->
+
+                        <button type="submit" class="btn btn-primary">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <img src="user.png" alt="Logo" class="footer-logo" loading="lazy">
+                    <p class="footer-name">Onkar Sonne</p>
+                    <p class="footer-title">Full Stack Developer</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/Onkar325" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/onkar-sonne-474538281/" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="year"></span> Sonne Onkar. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Load AOS script asynchronously -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
+    <script src="create.js" defer></script>
+</body>
+</html> 

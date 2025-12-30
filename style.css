@@ -1,0 +1,428 @@
+:root {
+    --bg-color: #0d231d;
+    --glass: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    overflow: hidden;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInBody 1.5s ease-out;
+}
+
+@keyframes fadeInBody {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Scattered Background Container */
+.scatter-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: transform 0.1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Individual Scattered Image Styling */
+.floating-img {
+    position: absolute;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    opacity: 0;
+    animation: fadeInFloat 2s ease-out forwards;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.floating-img:hover {
+    transform: scale(1.1) !important;
+    opacity: 0.9 !important;
+    z-index: 2;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.floating-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease-out;
+}
+
+/* Specific positions to "Scatter" them like the video */
+.img1 { 
+    top: 5%; left: 5%; width: 300px; height: 200px; 
+    transform: rotate(-5deg);
+    animation: fadeInFloat 2s ease-out 0.2s forwards, float1 25s infinite ease-in-out;
+}
+.img2 { 
+    top: -5%; right: 10%; width: 350px; height: 250px; 
+    transform: rotate(3deg);
+    animation: fadeInFloat 2s ease-out 0.4s forwards, float2 28s infinite ease-in-out;
+}
+.img3 { 
+    bottom: 10%; left: -2%; width: 400px; height: 280px; 
+    transform: rotate(4deg);
+    animation: fadeInFloat 2s ease-out 0.6s forwards, float3 30s infinite ease-in-out;
+}
+.img4 { 
+    bottom: 5%; right: 5%; width: 320px; height: 220px; 
+    transform: rotate(-3deg);
+    animation: fadeInFloat 2s ease-out 0.8s forwards, float4 27s infinite ease-in-out;
+}
+.img5 { 
+    top: 40%; left: 15%; width: 250px; height: 180px; 
+    transform: rotate(-2deg);
+    animation: fadeInFloat 2s ease-out 1s forwards, float5 26s infinite ease-in-out;
+}
+.img6 { 
+    top: 35%; right: 12%; width: 280px; height: 350px; 
+    transform: rotate(6deg);
+    animation: fadeInFloat 2s ease-out 1.2s forwards, float6 29s infinite ease-in-out;
+}
+.img7 { 
+    top: 15%; left: 40%; width: 200px; height: 150px; 
+    transform: rotate(-8deg);
+    animation: fadeInFloat 2s ease-out 1.4s forwards, float7 24s infinite ease-in-out;
+}
+.img8 { 
+    bottom: 20%; left: 45%; width: 280px; height: 200px; 
+    transform: rotate(2deg);
+    animation: fadeInFloat 2s ease-out 1.6s forwards, float8 31s infinite ease-in-out;
+}
+
+@keyframes fadeInFloat {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    to {
+        opacity: 0.6;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes float1 {
+    0%, 100% { transform: rotate(-5deg) translate(0, 0) scale(1); }
+    25% { transform: rotate(-3deg) translate(15px, -20px) scale(1.05); }
+    50% { transform: rotate(-7deg) translate(-10px, 15px) scale(0.98); }
+    75% { transform: rotate(-4deg) translate(20px, 10px) scale(1.03); }
+}
+
+@keyframes float2 {
+    0%, 100% { transform: rotate(3deg) translate(0, 0) scale(1); }
+    25% { transform: rotate(5deg) translate(-20px, 15px) scale(1.04); }
+    50% { transform: rotate(1deg) translate(10px, -25px) scale(0.97); }
+    75% { transform: rotate(4deg) translate(-15px, -10px) scale(1.02); }
+}
+
+@keyframes float3 {
+    0%, 100% { transform: rotate(4deg) translate(0, 0) scale(1); }
+    25% { transform: rotate(6deg) translate(25px, 20px) scale(1.06); }
+    50% { transform: rotate(2deg) translate(-15px, -15px) scale(0.96); }
+    75% { transform: rotate(5deg) translate(20px, -25px) scale(1.04); }
+}
+
+@keyframes float4 {
+    0%, 100% { transform: rotate(-3deg) translate(0, 0) scale(1); }
+    25% { transform: rotate(-1deg) translate(-25px, -20px) scale(1.03); }
+    50% { transform: rotate(-5deg) translate(15px, 25px) scale(0.99); }
+    75% { transform: rotate(-2deg) translate(-20px, 15px) scale(1.05); }
+}
+
+@keyframes float5 {
+    0%, 100% { transform: rotate(-2deg) translate(0, 0) scale(1); }
+    25% { transform: rotate(0deg) translate(18px, -18px) scale(1.04); }
+    50% { transform: rotate(-4deg) translate(-12px, 20px) scale(0.98); }
+    75% { transform: rotate(-1deg) translate(22px, 12px) scale(1.02); }
+}
+
+@keyframes float6 {
+    0%, 100% { transform: rotate(6deg) translate(0, 0) scale(1); }
+    25% { transform: rotate(8deg) translate(-22px, 18px) scale(1.05); }
+    50% { transform: rotate(4deg) translate(18px, -22px) scale(0.97); }
+    75% { transform: rotate(7deg) translate(-18px, -15px) scale(1.03); }
+}
+
+@keyframes float7 {
+    0%, 100% { transform: rotate(-8deg) translate(0, 0) scale(1); }
+    25% { transform: rotate(-6deg) translate(20px, 22px) scale(1.06); }
+    50% { transform: rotate(-10deg) translate(-18px, -18px) scale(0.96); }
+    75% { transform: rotate(-7deg) translate(25px, -20px) scale(1.04); }
+}
+
+@keyframes float8 {
+    0%, 100% { transform: rotate(2deg) translate(0, 0) scale(1); }
+    25% { transform: rotate(4deg) translate(-20px, -22px) scale(1.03); }
+    50% { transform: rotate(0deg) translate(22px, 18px) scale(0.99); }
+    75% { transform: rotate(3deg) translate(-18px, 20px) scale(1.05); }
+}
+
+/* High-End Glass Modal */
+.glass-modal {
+    position: relative;
+    z-index: 10;
+    width: 580px;
+    padding: 80px 40px;
+    background: var(--glass);
+    backdrop-filter: blur(50px) saturate(180%);
+    -webkit-backdrop-filter: blur(50px) saturate(180%);
+    border: 1px solid var(--border);
+    border-radius: 40px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    animation: modalEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes modalEntrance {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.glass-modal::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05), rgba(255,255,255,0.1));
+    border-radius: 40px;
+    z-index: -1;
+    opacity: 0;
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    font-size: 1.3rem;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.brand img { 
+    width: 32px; 
+    height: 32px;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 50px;
+    font-weight: 600;
+    letter-spacing: -1.5px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.4s forwards;
+}
+
+h1 span {
+    display: inline-block;
+    animation: wordFadeIn 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+h1 span:nth-child(1) { animation-delay: 1.6s; }
+h1 span:nth-child(2) { animation-delay: 1.8s; }
+h1 span:nth-child(3) { animation-delay: 2s; }
+h1 span:nth-child(4) { animation-delay: 2.2s; }
+h1 span:nth-child(5) { animation-delay: 2.4s; }
+h1 span:nth-child(6) { animation-delay: 2.6s; }
+h1 span:nth-child(7) { animation-delay: 2.8s; }
+
+@keyframes wordFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn-start {
+    background: white;
+    color: black;
+    border: none;
+    padding: 16px 70px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    transform: translateY(15px) scale(0.9);
+    animation: buttonEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 2.4s forwards;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes buttonEntrance {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.btn-start::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-start:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-start:hover {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3), 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.btn-start:active {
+    transform: scale(1.05) translateY(0);
+    transition: transform 0.1s;
+}
+
+.btn-start span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Overlay to darken edges */
+.vignette {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.7) 100%);
+    z-index: 5;
+    pointer-events: none;
+    animation: vignetteFadeIn 2s ease-out;
+}
+
+@keyframes vignetteFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Particle effects */
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 3;
+    animation: particleFloat 15s infinite linear;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Ripple animation for button */
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Zoom out transition for page exit */
+body.zoom-out {
+    animation: zoomOut 0.8s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+    overflow: hidden;
+}
+
+body.zoom-out .scatter-container,
+body.zoom-out .glass-modal,
+body.zoom-out .vignette {
+    animation: zoomOut 0.8s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+}
+
+@keyframes zoomOut {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* Smooth scroll behavior */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
