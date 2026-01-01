@@ -48,6 +48,7 @@ body {
     transition: var(--transition);
     transform-origin: center center;
     will-change: transform, opacity;
+    overflow-x: hidden;
 }
 
 /* Only apply zoom-in if coming from new.html */
@@ -313,13 +314,15 @@ img {
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid white;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     z-index: 1;
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .profile-img:hover {
-    transform: scale(1.05);
+    transform: scale(1.05) translateZ(0);
 }
 
 .shape {
@@ -363,10 +366,10 @@ img {
 
 @keyframes float {
     0%, 100% {
-        transform: translateY(0);
+        transform: translateY(0) translateZ(0);
     }
     50% {
-        transform: translateY(-20px);
+        transform: translateY(-20px) translateZ(0);
     }
 }
 
@@ -524,10 +527,11 @@ img {
     border-radius: 50%;
     object-fit: cover;
     border: 1px solid white;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     z-index: 1;
-   
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .experience-badge {
@@ -570,12 +574,15 @@ img {
     padding: 2rem;
     border-radius: 15px;
     text-align: center;
-    transition: var(--transition);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .skill-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) translateZ(0);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
 .skill-card i {
@@ -613,12 +620,15 @@ img {
     background-color: var(--bg-color);
     border-radius: 15px;
     overflow: hidden;
-    transition: var(--transition);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) translateZ(0);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
 .project-image {
@@ -630,11 +640,13 @@ img {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    transition: var(--transition);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .project-card:hover .project-image img {
-    transform: scale(1.1);
+    transform: scale(1.1) translateZ(0);
 }
 
 .project-overlay {
@@ -718,11 +730,13 @@ img {
     border-radius: 14px;
     padding: 1.25rem;
     box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .cert-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-4px) translateZ(0);
     box-shadow: 0 10px 22px rgba(0,0,0,0.10);
 }
 
@@ -925,11 +939,54 @@ img {
     font-size: 0.95rem;
 }
 
+/* Performance optimizations for smoother animations */
+.hero-content,
+.about-content,
+.contact-content,
+.skills-grid,
+.projects-grid,
+.certs-grid {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.skill-card,
+.project-card,
+.cert-card {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.profile-img,
+.about-img {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .navbar .container {
+        height: 70px;
+        padding: 0 1rem;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .logo-img {
+        width: 32px;
+        height: 32px;
+    }
+
     .nav-links {
         position: fixed;
-        top: 80px;
+        top: 70px;
         left: 0;
         width: 100%;
         background-color: var(--bg-color);
@@ -938,7 +995,7 @@ img {
         padding: 2rem;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         transform: translateX(-100%);
-        transition: transform 0.3s ease;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         z-index: 999;
         gap: 1.5rem;
     }
@@ -951,17 +1008,34 @@ img {
         display: flex;
     }
 
+    .hero {
+        padding: 120px 0 80px;
+    }
+
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 2rem;
     }
 
     .hero-text h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        line-height: 1.3;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
     }
 
     .hero-buttons {
         justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+
+    .btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
     }
 
     .social-icons {
@@ -972,18 +1046,135 @@ img {
         order: -1;
     }
 
+    .profile-img {
+        width: 250px;
+        height: 250px;
+        max-width: 250px;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
     .about-content {
         grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-img {
+        width: 250px;
+        height: 250px;
+        max-width: 250px;
+    }
+
+    .about-stats {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .experience-badge {
+        width: 100px;
+        height: 100px;
+        bottom: -10px;
+        right: -10px;
+    }
+
+    .experience-badge span {
+        font-size: 1.5rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .skill-card {
+        padding: 1.5rem;
+    }
+
+    .skill-card i {
+        font-size: 2.5rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .certs-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
     .contact-content {
         grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    .footer {
+        padding: 3rem 0 1.5rem;
     }
 
     .footer-content {
         flex-direction: column;
         gap: 1.5rem;
         text-align: center;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 1.75rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .profile-img,
+    .about-img {
+        width: 200px;
+        height: 200px;
+        max-width: 200px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .about-stats {
+        gap: 1rem;
+    }
+
+    .stat-number {
+        font-size: 2rem;
     }
 }
 

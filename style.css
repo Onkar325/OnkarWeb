@@ -36,6 +36,8 @@ body, html {
     height: 100%;
     z-index: 1;
     transition: transform 0.1s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 /* Individual Scattered Image Styling */
@@ -45,8 +47,11 @@ body, html {
     overflow: hidden;
     box-shadow: 0 15px 35px rgba(0,0,0,0.4);
     opacity: 0;
-    animation: fadeInFloat 2s ease-out forwards;
+    animation: fadeInFloat 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .floating-img:hover {
@@ -187,9 +192,10 @@ body, html {
     color: white;
     box-shadow: 0 40px 100px rgba(0,0,0,0.5);
     opacity: 0;
-    transform: translateY(30px) scale(0.95);
+    transform: translateY(30px) scale(0.95) translateZ(0);
     animation: modalEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
     transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform, opacity;
 }
 
 @keyframes modalEntrance {
@@ -306,8 +312,9 @@ h1 span:nth-child(7) { animation-delay: 2.8s; }
     backdrop-filter: blur(10px);
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     opacity: 0;
-    transform: translateY(15px) scale(0.9);
+    transform: translateY(15px) scale(0.9) translateZ(0);
     animation: buttonEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 2.6s forwards;
+    will-change: transform;
 }
 
 .btn-link:hover {
@@ -393,6 +400,160 @@ body.zoom-in .vignette {
 @keyframes ripple {
     to {
         transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    body, html {
+        overflow-x: hidden;
+    }
+
+    .scatter-container {
+        transform: none !important;
+    }
+
+    /* Reduce number of floating images on mobile */
+    .floating-img {
+        opacity: 0.4;
+    }
+
+    .img1, .img2, .img3, .img4, .img5, .img6, .img7, .img8 {
+        width: 120px !important;
+        height: 80px !important;
+    }
+
+    .img1 { top: 5%; left: 5%; }
+    .img2 { top: 10%; right: 5%; }
+    .img3 { bottom: 10%; left: 5%; }
+    .img4 { bottom: 5%; right: 5%; }
+    .img5 { top: 30%; left: 10%; }
+    .img6 { top: 25%; right: 10%; }
+    .img7 { top: 15%; left: 35%; }
+    .img8 { bottom: 20%; left: 40%; }
+
+    /* Glass Modal Mobile */
+    .glass-modal {
+        width: 90%;
+        max-width: 90%;
+        padding: 40px 20px;
+        border-radius: 30px;
+        margin: 20px;
+    }
+
+    .brand {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .brand img {
+        width: 24px;
+        height: 24px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+        margin-bottom: 30px;
+    }
+
+    h1 span {
+        display: inline-block;
+    }
+
+    .btn-link {
+        font-size: 0.9rem;
+        padding: 10px 25px;
+        margin-top: 20px;
+    }
+
+    /* Reduce particle count on mobile */
+    .particle {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .glass-modal {
+        width: 95%;
+        padding: 30px 15px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .brand {
+        font-size: 0.9rem;
+    }
+
+    .btn-link {
+        font-size: 0.85rem;
+        padding: 8px 20px;
+    }
+
+    /* Hide some images on very small screens */
+    .img5, .img6, .img7, .img8 {
+        display: none;
+    }
+}
+
+/* Performance optimizations for smoother animations */
+.floating-img {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.glass-modal {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
+.btn-link {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.scatter-container {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Smoother animation easing */
+@keyframes fadeInFloat {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px) translateZ(0);
+    }
+    to {
+        opacity: 0.6;
+        transform: scale(1) translateY(0) translateZ(0);
+    }
+}
+
+@keyframes modalEntrance {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1) translateZ(0);
+    }
+}
+
+@keyframes buttonEntrance {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1) translateZ(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(1) translateZ(0);
+        opacity: 1;
+    }
+    to {
+        transform: scale(0.3) translateZ(0);
         opacity: 0;
     }
 }

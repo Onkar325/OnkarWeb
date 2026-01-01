@@ -6,15 +6,19 @@ if (document.referrer.includes('new.html') || sessionStorage.getItem('fromNewPag
 
 // Initialize all functionality after DOM loads
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize AOS (Animate On Scroll)
+    // Initialize AOS (Animate On Scroll) with mobile optimizations
     function initAOS() {
         if (typeof AOS !== 'undefined') {
+            const isMobile = window.innerWidth <= 768;
             AOS.init({
-                duration: 800,
-                offset: 100,
+                duration: isMobile ? 600 : 800,
+                offset: isMobile ? 50 : 100,
                 once: true,
                 delay: 0,
-                easing: 'ease-out-cubic'
+                easing: 'ease-out-cubic',
+                disable: isMobile ? false : false, // Keep enabled but optimized
+                useClassNames: false,
+                disableMutationObserver: false
             });
         } else {
             // Retry if AOS hasn't loaded yet
@@ -112,16 +116,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Navbar Scroll Effect
+    // Navbar Scroll Effect (optimized for mobile)
     const navbar = document.querySelector('.navbar');
     let lastScroll = 0;
+    let ticking = false;
 
     if (navbar) {
-        window.addEventListener('scroll', () => {
+        function updateNavbar() {
             const currentScroll = window.pageYOffset;
 
             if (currentScroll <= 0) {
                 navbar.classList.remove('scroll-up');
+                ticking = false;
                 return;
             }
 
@@ -133,7 +139,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 navbar.classList.add('scroll-up');
             }
             lastScroll = currentScroll;
-        });
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(updateNavbar);
+                ticking = true;
+            }
+        }, { passive: true });
     }
 
     // Form Submission
@@ -195,7 +209,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.5 });
+    }, { 
+        threshold: window.innerWidth <= 768 ? 0.3 : 0.5,
+        rootMargin: '0px 0px -50px 0px'
+    });
 
     const skillsGrid = document.querySelector('.skills-grid');
     if (skillsGrid) {

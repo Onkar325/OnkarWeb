@@ -14,6 +14,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function animateParallax() {
+        // Disable parallax on mobile for better performance
+        if (window.innerWidth <= 768) {
+            return;
+        }
+        
         currentX += (targetX - currentX) * 0.05;
         currentY += (targetY - currentY) * 0.05;
         
@@ -22,12 +27,23 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const bgLayer = document.getElementById('bg-layer');
         if (bgLayer) {
-            bgLayer.style.transform = `translate(${-moveX}px, ${-moveY}px)`;
+            bgLayer.style.transform = `translate3d(${-moveX}px, ${-moveY}px, 0)`;
         }
         
         requestAnimationFrame(animateParallax);
     }
     animateParallax();
+    
+    // Re-enable parallax on window resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            if (window.innerWidth > 768) {
+                animateParallax();
+            }
+        }, 250);
+    });
 
     // Create floating particles
     function createParticle() {
@@ -44,11 +60,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 30000);
     }
 
-    // Create particles periodically
-    for (let i = 0; i < 15; i++) {
+    // Create particles periodically (reduce on mobile)
+    const particleCount = window.innerWidth <= 768 ? 5 : 15;
+    const particleInterval = window.innerWidth <= 768 ? 5000 : 3000;
+    
+    for (let i = 0; i < particleCount; i++) {
         setTimeout(() => {
             createParticle();
-            setInterval(createParticle, 3000);
+            setInterval(createParticle, particleInterval);
         }, i * 200);
     }
 
